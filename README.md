@@ -1,7 +1,10 @@
 # cypress-fun
 
-Stack: NodeJs, VSCode, Yarn package manager, Cypress.io
-For more on cypress.io visit: https://www.cypress.io/
+Stack: 
+* Node.js (https://nodejs.org/en/)
+* Visual Studio Code (https://code.visualstudio.com/)
+* Yarn package manager (https://yarnpkg.com)
+* Cypress.io (https://www.cypress.io/)
 
 1. Fork or clone this repository
 
