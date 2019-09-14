@@ -6,4 +6,8 @@ describe('Lets Begin', function() {
       tests.beginTests()
     })
 
+    // Performs a speed test
+
+    // Verifies navigation etc...
+
 })
