@@ -1,4 +1,4 @@
-# cypress-fun
+# lets-go-cypress
 
 Stack: 
 * Node.js (https://nodejs.org/en/)
