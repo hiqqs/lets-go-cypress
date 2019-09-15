@@ -8,24 +8,24 @@ const clickGoButton = () => {
     cy.get('.start-button a.js-start-test').click();
 }
 
-const shouldHaveDownloadSpeed = () => {
-    // wait until it finds the download speed element with number in it
+const shouldHaveSpeedResult = (speedSelector) => {
+    // wait until it finds the speed result element with number in it
     // timeout after 60s
-    cy.get('.result-item-download span.download-speed').contains(/\d/, {
+    cy.get(speedSelector).contains(/\d/, {
         timeout: SPEED_TEST_WAIT_TIME
     }).should('be.visible');
+}
+
+const shouldHaveDownloadSpeed = () => {
+    shouldHaveSpeedResult('.result-item-download span.download-speed');
 }
 
 const shouldHavePing = () => {
-    cy.get('.result-item-ping span.ping-speed').contains(/\d/, {
-        timeout: SPEED_TEST_WAIT_TIME
-    }).should('be.visible');
+    shouldHaveSpeedResult('.result-item-ping span.ping-speed');
 }
 
 const shouldHaveUploadSpeed = () => {
-    cy.get('.result-item-upload span.upload-speed').contains(/\d/, {
-        timeout: SPEED_TEST_WAIT_TIME
-    }).should('be.visible');
+    shouldHaveSpeedResult('.result-item-upload span.upload-speed');
 }
 
 const rateISP = (rating) => {

@@ -2,15 +2,17 @@ const tests = require('../support/lets-go')
 
 describe('Lets Begin', function() {
 
-    it('Open browser to speedtest.net and view ISP and Host info', function() {
+    beforeEach(function(){
       tests.beginTests();
+    });
+    
+    it('Open browser to speedtest.net and view ISP and Host info', function() {
       tests.shouldHaveISP();
       tests.shouldHaveHost();
     });
 
     // Performs a speed test
     it('Performs a speed test and then rate ISP', function() {
-      tests.beginTests();
       tests.clickGoButton();
       tests.shouldHavePing();
       tests.shouldHaveDownloadSpeed();
