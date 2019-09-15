@@ -35,11 +35,25 @@ const rateISP = (rating) => {
     cy.get('.result-item-isp .rating-container span[data-default="#1cbfff"]').should('have.length', rating);
 }
 
+const shouldHaveISP = () => {
+    // ISP info should not be empty
+    cy.get('.result-item-isp .result-label').should('not.be.empty');
+    cy.get('.result-item-isp .result-data').should('not.be.empty');
+}
+
+const shouldHaveHost = () => {
+    // host URL and address should not be empty
+    cy.get('.result-item-host .hostUrl').should('not.be.empty');
+    cy.get('.result-item-host .result-data').should('not.be.empty');
+}
+
 module.exports = {
     beginTests,
     clickGoButton,
     shouldHaveDownloadSpeed,
     shouldHavePing,
     shouldHaveUploadSpeed,
-    rateISP
+    rateISP,
+    shouldHaveISP,
+    shouldHaveHost
 }
