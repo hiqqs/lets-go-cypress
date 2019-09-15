@@ -25,5 +25,24 @@ describe('Lets Begin', function() {
       tests.checkNavMenuContent();
     });
 
+    it ('navigates between navbar links and verify URL and title', function() {
+      tests.clickAndCheckNavbarLink('Apps', 'apps', 'Speedtest Apps - Test Your Internet Anywhere With Any Device');
+      tests.clickLogo();
+
+      tests.clickAndCheckNavbarLink('Insights', 'insights', 'Speedtest Insights - Stories, Analysis, and More from the Speedtest Team');
+      tests.clickLogo();
+
+      tests.clickAndCheckNavbarLink('Network', 'speedtest-servers', 'Speedtest Servers | Ookla');
+      tests.clickLogo();
+
+      tests.clickAndCheckNavbarLink('Enterprise', 'enterprise', 'Enterprise Network Performance Measurement Tools | Ookla');
+      tests.clickLogo();
+      
+      tests.clickAndCheckNavbarLink('About', 'about', 'About Speedtest');
+      tests.clickLogo();
+
+      tests.clickSubmenuItem('Apps', 'Mac');
+      tests.checkPageUrlAndTitle('apps/mac', 'Speedtest for Mac - Download Speedtest for macOS on the Mac App Store');
+    });
 
 })

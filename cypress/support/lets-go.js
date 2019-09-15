@@ -76,6 +76,25 @@ const checkNavMenuContent = () => {
     }
 }
 
+const clickAndCheckNavbarLink = (linkName, linkUrl, linkTitle) => {
+    cy.get('.menu-main > li a').contains(linkName).click();
+    checkPageUrlAndTitle(linkUrl, linkTitle);
+}
+
+const checkPageUrlAndTitle = (pageUrl, pageTitle) => {
+    cy.url().should('eq', `https://www.speedtest.net/${pageUrl}`);
+    cy.title().should('eq', pageTitle);
+}
+
+const clickSubmenuItem = (menuItem, submenu) => {
+    cy.get('.menu-main li a').contains(menuItem).siblings('.sub-menu').find('li a').contains(submenu).click({ force: true });
+}
+
+const clickLogo = () => {
+    cy.get('.nav .masthead-logo').click()
+    cy.url().should('eq', 'https://www.speedtest.net/');
+}
+
 module.exports = {
     beginTests,
     clickGoButton,
@@ -85,5 +104,9 @@ module.exports = {
     rateISP,
     shouldHaveISP,
     shouldHaveHost,
-    checkNavMenuContent
+    checkNavMenuContent,
+    clickAndCheckNavbarLink,
+    clickLogo,
+    checkPageUrlAndTitle,
+    clickSubmenuItem
 }
