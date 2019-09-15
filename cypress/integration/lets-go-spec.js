@@ -20,7 +20,10 @@ describe('Lets Begin', function() {
       tests.rateISP(4);
     });
 
-
     // Verifies navigation etc...
+    it ('navbar menu has expected content', function() {
+      tests.checkNavMenuContent();
+    });
+
 
 })

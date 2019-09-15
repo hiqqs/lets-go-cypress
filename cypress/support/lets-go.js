@@ -30,7 +30,9 @@ const shouldHaveUploadSpeed = () => {
 
 const rateISP = (rating) => {
     // rate ISP stars by rating number (1 - 5)
-    cy.get(`.result-item-isp .rating-container span:nth-child(${rating})`).click();
+    // sometimes the stars container may be covered by popup ads
+    // use force click to make sure it can be triggered
+    cy.get(`.result-item-isp .rating-container span:nth-child(${rating})`).click({ force: true });
     // make sure the star color changed after rating
     cy.get('.result-item-isp .rating-container span[data-default="#1cbfff"]').should('have.length', rating);
 }
@@ -47,6 +49,33 @@ const shouldHaveHost = () => {
     cy.get('.result-item-host .result-data').should('not.be.empty');
 }
 
+const NAV_CONTENT_MAP = {
+    Apps: ['iOS', 'Android', 'Mac', 'Windows', 'Chrome', 'Apple TV'],
+    Insights: ['Blog', 'Global Index', 'Ookla 5G Map', 'Reports'],
+    Network: [],
+    Enterprise: ['Speedtest Intelligence', 'Speedtest Custom', 'CellMaps', 'Partners & Programs'],
+    About: ['Press', 'Knowledge Base', 'Advertise', 'Careers'],
+    'Log In': ['Results History', 'Settings', 'Help', 'Create Account']
+}
+
+// check navigation bar menu and sub menu content match with the NAV_CONTENT_MAP
+const checkNavMenuContent = () => {
+    const menuList = Object.keys(NAV_CONTENT_MAP);
+    for (const menuItem of menuList) {
+        const subMenuList = NAV_CONTENT_MAP[menuItem];
+        console.log(menuItem);
+
+        if (subMenuList.length === 0) continue;
+        
+        // somehow the trigger mouseover doesn't work here for nav menu item, use invoke show instead
+        // cy.get('.menu-main > li a').contains(menuItem).trigger('mouseover');
+        cy.get('.menu-main > li a').contains(menuItem).siblings('.sub-menu').invoke('show');
+        for (const subMenu of subMenuList) {
+            cy.get('.menu-main li a').contains(menuItem).siblings('.sub-menu').find('li a').contains(subMenu).should('be.visible');
+        }
+    }
+}
+
 module.exports = {
     beginTests,
     clickGoButton,
@@ -55,5 +84,6 @@ module.exports = {
     shouldHaveUploadSpeed,
     rateISP,
     shouldHaveISP,
-    shouldHaveHost
+    shouldHaveHost,
+    checkNavMenuContent
 }
