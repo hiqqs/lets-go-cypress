@@ -7,7 +7,7 @@
 * [Example](#example)
 
 
-# Stack: 
+# Stack
 * Node.js (https://nodejs.org/en/)
 * Visual Studio Code (https://code.visualstudio.com/)
 * Yarn package manager (https://yarnpkg.com)
