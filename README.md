@@ -13,9 +13,9 @@
 * Yarn package manager (https://yarnpkg.com)
 * Cypress.io (https://www.cypress.io/)
 
-# Fork or clone this repository
-
 # Install
+Fork or clone this repository
+`git clone https://github.com/johnhiggs/lets-go-cypress.git`
 ```
 yarn install
 ```
