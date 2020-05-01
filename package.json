@@ -11,7 +11,9 @@
   "scripts": {
     "test": "cypress run",
     "cy:open": "cypress open",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "cypress",
@@ -26,7 +28,8 @@
     "semantic-release": "15.13.24"
   },
   "dependencies": {
-    "safe-marked": "2.0.0"
+    "safe-marked": "2.0.0",
+    "snyk": "^1.316.1"
   },
   "repository": {
     "type": "git",
@@ -35,5 +38,6 @@
   "bugs": {
     "url": "https://github.com/cypress-io/cypress-fiddle/issues"
   },
-  "homepage": "https://github.com/cypress-io/cypress-fiddle#readme"
+  "homepage": "https://github.com/cypress-io/cypress-fiddle#readme",
+  "snyk": true
 }
